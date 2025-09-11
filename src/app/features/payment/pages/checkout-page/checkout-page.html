@@ -1,0 +1,77 @@
+
+<section>
+<div class=" container mx-auto">
+
+    <div>
+     <app-header [Title]="'Checkout'"/> 
+    </div>
+
+    <form [formGroup] = "checkout_form">
+
+        <div class=" p-4 ">
+
+            <!-- address details input -->
+            <div class="relative mb-4 flex flex-col">
+                <label for="details" class="leading-7 text-sm text-gray-600">Address Details</label>
+                <input type="text"  formControlName="details" id="details" name="details" class="w-full  md:w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <!-- phone input -->
+            <div class="relative mb-4 flex flex-col">
+                <label for="Phone" class="leading-7 text-sm text-gray-600">Phone</label>
+                <input type="tel" id="Phone" formControlName="phone" name="Phone" class="w-full  md:w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <!-- city drop down menu -->
+            <div class="relative mb-4 flex flex-col">
+                 <label for="egypt-cities">Choose a city in Egypt:</label> 
+                  <select id="egypt-cities" formControlName="city" name="egypt-cities" class=" w-full md:w-1/2">
+                   <option value="">--Select a City--</option>
+                   <option value="cairo">Cairo</option>
+                   <option value="alexandria">Alexandria</option>
+                   <option value="giza">Giza</option>
+                   <option value="shubra-el-kheima">Shubra El-Kheima</option>
+                   <option value="port-said">Port Said</option>
+                   <option value="suez">Suez</option>
+                   <option value="luxor">Luxor</option>
+                   <option value="mansoura">Mansoura</option>
+                   <option value="tanta">Tanta</option>
+                   <option value="asyut">Asyut</option>
+                   <option value="ismailia">Ismailia</option>
+                   <option value="faiyum">Faiyum</option>
+                   <option value="zagazig">Zagazig</option>
+                   <option value="damietta">Damietta</option>
+                   <option value="aswan">Aswan</option>
+                   <option value="minya">Minya</option>
+                   <option value="beni-suef">Beni Suef</option>
+                   <option value="qena">Qena</option>
+                   <option value="sohag">Sohag</option>
+                   <option value="hurghada">Hurghada</option>
+                   <option value="sharm-el-sheikh">Sharm El-Sheikh</option>
+                   <option value="marsamatrouh">Marsa Matrouh</option>
+                   <option value="kafr-el-sheikh">Kafr El-Sheikh</option>
+                   <option value="damanhur">Damanhur</option>
+                   <option value="arish">Arish</option>
+                 </select>
+             </div>
+
+             <!-- buttons -->
+             <div class="flex w-1/2 gap-6">
+                 <button class="btn-main"  (click)="Pay(state = 'cash')"> 
+                    Cash On Delivery 
+                    <i class="fa-solid fa-cash-register text-blue-800"></i>
+                </button>
+
+                 <button class="btn-main" (click)="Pay(state = 'Online')">  
+                    Online Payment 
+                    <i class="fa-brands fa-cc-visa text-blue-800"></i>
+                </button>
+
+             </div>
+         </div>
+
+    </form>
+</div>
+
+
+
+
+</section>

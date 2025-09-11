@@ -1,0 +1,4 @@
+interface RemoveAllCart 
+{
+  message: string; 
+}

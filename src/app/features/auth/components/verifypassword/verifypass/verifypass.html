@@ -1,0 +1,31 @@
+<section>
+    <div class="container mx-auto mt-15">
+        <div>
+            <h1 class="font-bold text-4xl mb-3">please enter your Verification Code</h1>
+        </div>
+  <form (ngSubmit)="VerifyCode();"  [formGroup]="verifypass_form" >
+    <div class="flex flex-col">
+
+       <input formControlName="resetCode" name="resetCode" type="text" class=" w-full md:w-[75%]" placeholder="Enter code" required>
+
+        @let user_code = verifypass_form.get("resetCode");
+         @if (user_code?.errors && user_code?.touched) 
+            { 
+               @if(user_code?.getError("required"))
+               {
+                  <app-error-message>
+                    <span class="font-medium">This input is required !</span>
+                  </app-error-message>
+               }
+            }
+       <button  type="submit" class="cursor-pointer  mt-3 border-2 rounded-md border-green-300 hover:bg-green-400 duration-100 w-1/4 h-1/4">verify</button>
+    </div>
+    
+
+  </form>
+ 
+    
+</div>
+</section>
+
+

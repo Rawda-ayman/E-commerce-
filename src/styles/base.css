@@ -1,0 +1,4 @@
+.btn-main
+{
+  @apply w-1/2 rounded-full bg-green-500 text-gray-100 focus:outline-none cursor-pointer hover:bg-green-700 duration-100
+}

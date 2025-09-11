@@ -1,0 +1,174 @@
+
+<div class="min-h-screen">
+    <div class="w-full flex flex-col items-center justify-center">
+       <div>
+        <!-- image -->
+       <div class="flex font-bold justify-center mt-6">
+        <img src="/images/freshcart-logo.svg" class="h-8" alt="Fresh-Cart Logo" />
+        </div>
+       <!-- header -->
+       <h2 class="text-2xl text-center text-gray-800 mb-8 ">Signup</h2>
+       </div>
+       <!-- 
+       (ngSubmit)="onsubmit()" form not button الاحسن ان اعمله علي  
+         حاجات انا مش مضطره اهندلها handleلانه بي
+       -->
+  <form [formGroup]="register_form" (ngSubmit)="OnSubmit()" class="w-full md:w-[75%] rounded-lg">
+         <!-- inputs -->
+    <div class="px-12 pb-10 ">   
+         <!-- name field  -->
+      <div class="w-full mb-2">
+             <div class="ms-14 ps-14">
+              <label for="Name">Name</label>
+            </div>
+            <div class="flex justify-center">
+                <input id="Name" type="text" formControlName="name" placeholder="Name"  class=" w-[75%] border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent"/>
+            </div>
+            <!-- error handling (validation) -->
+             @let user_name = register_form.get("name");
+            @if (user_name?.errors && user_name?.touched) 
+            {  
+                @if (user_name?.getError("required")) 
+                {
+                   <app-error-message> 
+                     <span class="font-medium">This input is required!</span>
+                   </app-error-message>
+                }
+                @if(user_name?.getError("minlength"))
+                {
+                   <app-error-message> 
+                     <span class="font-medium">Characters must be at least 3 characters!</span>
+                   </app-error-message>
+                }
+            }
+      </div>
+      <!-- email field -->
+      <div class="w-full mb-2">
+        <div class="ms-14 ps-14">
+            <label for="email">Email</label>
+        </div>
+        <div class="flex justify-center">
+            <input  id="email" type="email" formControlName="email" placeholder="E-mail" class="  w-[75%] border-2 rounded px-3py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent"/>
+        </div>
+        @let user_email = register_form.get("email");
+         @if (user_email?.errors && user_email?.touched) 
+            { 
+               @if(user_email?.getError("required"))
+               {
+                  <app-error-message>
+                    <span class="font-medium">This input is required !</span>
+                  </app-error-message>
+               }
+               @if(user_email?.getError("email"))
+               {
+                  <app-error-message>
+                    <span class="font-medium">this email is invalid !</span>
+                  </app-error-message>
+               }
+            }
+      </div>
+      <!-- password field -->
+       <div class="w-full mb-2">
+        <div class="ms-14 ps-14">
+          <label for="password">Password</label>
+        </div>
+        <div class="flex flex-col items-center">
+            <input id="password" [type]="isShowPassword? 'text' :'password' " formControlName="password" placeholder="Password"  class="w-[75%] border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent relative" />
+                 <span (click)="togglepassword();" class="absolute  right-1/4 top-[60%]"> 
+                  <i [class]=" isShowPassword? 'fa-solid fa-eye-slash':'fa-solid fa-eye'"></i> 
+                </span>
+          </div>
+        
+
+        @let user_password = register_form.get("password");
+        @if (user_password?.errors && user_password?.touched) 
+        {
+          <app-error-message>
+            @if (user_password?.getError("required"))
+            {
+              <span class="font-medium">This input is required !</span>
+            }
+            @if (user_password?.getError("pattern"))
+            {
+              <span class="font-medium">Invalid password pattern !</span>
+            }
+          </app-error-message>
+        }
+      </div>
+      <!-- repassword field -->
+       <div class="w-full mb-2">
+        <div class="ms-14 ps-14">
+          <label for="rePassword">rePassword</label>
+        </div>
+        <div class="flex justify-center">
+            <input id="rePassword" type="password" formControlName="rePassword" placeholder="rePassword"  class=" w-[75%] border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent"/>
+        </div>
+         @let user_rePassword = register_form.get("rePassword");
+        @if (register_form.getError("missmatch") && user_rePassword?.touched ) 
+        {
+          <app-error-message>
+            @if (user_rePassword?.getError("required")) 
+            {
+              <span class="font-medium">This input is required !</span>
+            }
+            @if (register_form.getError("missmatch"))
+            {
+              <span class="font-medium"> Password isn't match !</span>
+            }
+          </app-error-message>
+        }
+      </div>
+      <!-- phone field -->
+       <div class="w-full mb-2">
+        <div class="ms-14 ps-14">
+          <label for="Phone">Phone</label>
+        </div>
+       <div class="flex justify-center">
+         <input id="Phone" type="tel"  placeholder="Phone" formControlName="phone"  class=" w-[75%] border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent"/>
+       </div>
+          @let user_phone = register_form.get("phone");
+        @if (user_phone?.errors && user_phone?.touched) 
+        {
+          <app-error-message>
+            @if (user_phone?.getError("required"))
+            {
+              <span class="font-medium">This input is required !</span>
+            }
+            @if (user_phone?.getError("pattern"))
+            {
+              <span class="font-medium">Invalid phone number !</span>
+            }
+          </app-error-message>
+        }
+      </div>
+       <!-- button -->
+      <div class=" text-center  md:flex md:justify-center md:space-x-4">
+        <button [disabled] = "isLoading" type="submit" class=" disabled:bg-gray-500 disabled:cursor-auto w-1/3 rounded-full bg-green-500 text-gray-100 font-bold focus:outline-none cursor-pointer hover:bg-green-700 duration-100">
+           Submit 
+           @if(isLoading) 
+           {
+             <i class="fa-solid fa-spinner fa-spin"></i>
+           }
+          </button>
+          <p> Have an account? <a routerLink="/signin" class="text-green-400 font-bold">Signin Now</a></p>
+      </div>
+      <div>
+        @if(successmessage)
+        {
+          <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+            <p class="font-bold"> Register {{successmessage}}</p> 
+            <p>Will navigate you to login page after {{timer}} s</p>
+          </div>
+        }
+        @if (errormessage) 
+        {  
+        <div class="bg-red-400 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+          <p class="font-bold">{{errormessage}}</p> 
+          <p></p>
+        </div>
+        }
+      </div>
+     </div>
+ </form>
+    </div>
+</div>

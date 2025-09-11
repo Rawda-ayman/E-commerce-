@@ -1,0 +1,40 @@
+ <form [formGroup]="resetpass_form" (ngSubmit)=" ResetPassword()" class="w-full md:w-[75%] rounded-lg">
+      <!-- inputs -->
+    <div class="px-12 pb-10 mt-10">
+      <!-- email-field -->
+      <div class="w-full mb-2">
+        <div>
+          <label for="email">Email address</label>
+        </div>
+        <div class="flex justify-center">
+          <input formControlName="email"   id="email" type="text" placeholder="Email Address" class=" w-full  border-2 rounded px-3py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent"/>
+        </div>
+      </div>
+      <!-- password field -->
+      <div class="w-full mb-2">
+        <div>
+           <label for="newPassword">Password</label>
+        </div>
+        <div class="flex justify-center">
+          <input formControlName="newPassword"  id="newPassword" type="password" placeholder="Password" class=" w-full border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent"/>
+        </div>  
+      </div>
+      <div>
+          @if (resetpass_form.get("email")?.errors&& resetpass_form.get("email")?.touched||resetpass_form.get("newPassword")?.errors && resetpass_form.get("newPassword")?.touched) 
+        {
+            @if (resetpass_form.get("email")?.getError("required")||resetpass_form.get("newPassword")?.getError("required")) 
+            {
+             <app-error-message>
+               <span class="font-medium">All data is required !</span>
+             </app-error-message>
+            }
+          }
+      </div>
+      <!-- button -->
+      <div class="flex justify-center space-x-2">
+          <button  type="submit" class=" w-1/4 rounded-full bg-green-500 text-gray-100 focus:outline-none cursor-pointer hover:bg-green-700 duration-100 flex justify-center items-center gap-2">
+          ResetPassword
+          </button>
+      </div>
+    </div>
+  </form>
