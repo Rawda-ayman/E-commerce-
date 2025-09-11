@@ -26,8 +26,12 @@ export const serverRoutes: ServerRoute[] =
     path: "cart",
     renderMode: RenderMode.Client,
   },
+  // aflt el auto save 34an el laptob myb2ash 3aleh da8t kbeer m3 kol 
+// update hy3ml rebuild ll angular application tany
+
+  // keda 34an el application kolo yb2a CSR
   {
     path: '**',
-    renderMode: RenderMode.Server,
+    renderMode: RenderMode.Client,
   }
 ];
