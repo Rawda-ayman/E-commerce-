@@ -3,7 +3,7 @@
 
     @for (slide of allcategories; track slide._id) {
       <ng-template carouselSlide [id]="slide._id">
-        <img class="h-[250px]" [src]="slide.image" [alt]="slide.name" [title]="slide.name">
+        <img class="h-[200px] object-contain w-full" [src]="slide.image" [alt]="slide.name" [title]="slide.name">
         <h1 class="text-center">{{slide.name}}</h1>
       </ng-template>
     }

@@ -6,24 +6,45 @@
      <app-header [Title]="'Checkout'"/> 
     </div>
 
-    <form [formGroup] = "checkout_form">
+    <div class="flex justify-around  py-4">
+      
+         <form [formGroup] = "checkout_form">
 
         <div class=" p-4 ">
 
             <!-- address details input -->
             <div class="relative mb-4 flex flex-col">
-                <label for="details" class="leading-7 text-sm text-gray-600">Address Details</label>
-                <input type="text"  formControlName="details" id="details" name="details" class="w-full  md:w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <label for="details" class="leading-7 text-sm text-black">Address Details</label>
+                <input type="text"  formControlName="details" id="details" name="details" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
+             @if(checkout_form.get("details")?.errors && checkout_form.get("details")?.touched )
+                {
+                    @if(checkout_form.get("details")?.getError("minlength"))
+                    {
+                        <app-error-message>
+                          <span class="font-medium">minlength is 10 characters!</span>
+                        </app-error-message>
+                    }
+                }
+         
             <!-- phone input -->
             <div class="relative mb-4 flex flex-col">
-                <label for="Phone" class="leading-7 text-sm text-gray-600">Phone</label>
-                <input type="tel" id="Phone" formControlName="phone" name="Phone" class="w-full  md:w-1/2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <label for="Phone" class="leading-7 text-sm text-black">Phone</label>
+                <input type="tel" id="Phone" formControlName="phone" name="Phone" class="w-full  bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
+               @if(checkout_form.get("phone")?.errors && checkout_form.get("phone")?.touched )
+                {
+                    @if(checkout_form.get("phone")?.getError("pattern"))
+                    {
+                        <app-error-message>
+                          <span class="font-medium">invalid pattern!</span>
+                        </app-error-message>
+                    }
+                }
             <!-- city drop down menu -->
             <div class="relative mb-4 flex flex-col">
                  <label for="egypt-cities">Choose a city in Egypt:</label> 
-                  <select id="egypt-cities" formControlName="city" name="egypt-cities" class=" w-full md:w-1/2">
+                  <select id="egypt-cities" formControlName="city" name="egypt-cities" class=" w-full ">
                    <option value="">--Select a City--</option>
                    <option value="cairo">Cairo</option>
                    <option value="alexandria">Alexandria</option>
@@ -52,23 +73,39 @@
                    <option value="arish">Arish</option>
                  </select>
              </div>
+ 
+                 @if(checkout_form.get("details")?.errors && checkout_form.get("details")?.touched || checkout_form.get("phone")?.errors && checkout_form.get("phone")?.touched || checkout_form.get("city")?.errors && checkout_form.get("city")?.touched)
+                {
+                    @if(checkout_form.get("details")?.getError("required")||checkout_form.get("phone")?.getError("required")||checkout_form.get("city")?.getError("required"))
+                    {
+                        <app-error-message>
+                          <span class="font-medium">All data is required !</span>
+                        </app-error-message>
+                    }
+                }
+           
 
              <!-- buttons -->
-             <div class="flex w-1/2 gap-6">
-                 <button class="btn-main"  (click)="Pay(state = 'cash')"> 
+             <div class="flex w-1/2 gap-6  mx-auto">
+                 <button class="border-2 w-[280px] h-[50px] bg-green-600 text-white cursor-pointer"  (click)="Pay(state = 'cash')"> 
                     Cash On Delivery 
                     <i class="fa-solid fa-cash-register text-blue-800"></i>
                 </button>
 
-                 <button class="btn-main" (click)="Pay(state = 'Online')">  
+                 <button class="border-2 w-[280px] h-[50px] bg-green-600 text-white cursor-pointer" (click)="Pay(state = 'Online')">  
                     Online Payment 
                     <i class="fa-brands fa-cc-visa text-blue-800"></i>
                 </button>
 
              </div>
          </div>
+         </form>
 
-    </form>
+         <div>
+            <img src="/images/Pin Location On Land map pin icon, location pin, map pin, location pin icon, location pin icon .jpeg" class="size-60 hidden md:block" alt="location pin icon">
+         </div>
+    </div>
+   
 </div>
 
 

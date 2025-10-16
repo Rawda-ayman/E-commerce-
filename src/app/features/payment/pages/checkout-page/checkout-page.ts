@@ -3,10 +3,11 @@ import { Header } from "../../../../shared/components/header/header";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, ɵInternalFormsSharedModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentService } from '../../services/payment.service';
+import { ErrorMessage } from "../../../auth/error-message/error-message";
 
 @Component({
   selector: 'app-checkout-page',
-  imports: [Header, ɵInternalFormsSharedModule, ReactiveFormsModule],
+  imports: [Header, ɵInternalFormsSharedModule, ReactiveFormsModule, ErrorMessage],
   templateUrl: './checkout-page.html',
   styleUrl: './checkout-page.css'
 })
@@ -26,9 +27,9 @@ constructor()
   this.cardid = this.activatedroute.snapshot.paramMap.get("cardid") as string ;
   this.checkout_form = this.formbuilder.group(
     {
-        details : ["",[Validators.required]],
-        phone : ["",[Validators.required]],
-        city : ["",[Validators.required]]
+        details : [null,[Validators.required,Validators.minLength(10)]],
+        phone : [null,[Validators.required,Validators.pattern(/^01[2105][0-9]{8}$/)]],
+        city : [null,[Validators.required]]
     }
   )
 }
@@ -45,7 +46,7 @@ constructor()
    Pay(status:string)
    {    
      this.HandleBeforeSubmit();
-     if(this.checkout_form.valid )
+     if(this.checkout_form.valid) 
      { 
        const details = this.checkout_form.controls["details"].value ;
        const phone = this.checkout_form.controls["phone"].value ;
@@ -57,7 +58,6 @@ constructor()
             next:(response):void => 
             { 
               this.router.navigateByUrl("/allorders") ; 
-              console.log(response) ;
             }
           }
          ) ; 
@@ -73,7 +73,6 @@ constructor()
             }
           }
         ) ;
-        // this.paymentservice.OnlinePay(this.checkout_form.value,this.cardid) ;
        }
      }  
    }

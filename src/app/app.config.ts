@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     // index.html
 
     // withHashLocation() [ 3aml ignore l /home ]
-// http://localhost:4200/
+   // http://localhost:4200/ 
 
     // lw 3awza t3mli save all files just press [ ctrl + k + s  ]
     provideHttpClient(withFetch(),withInterceptors([tokenInterceptor,errorsInterceptor,loadingInterceptor])), 
@@ -30,3 +30,4 @@ export const appConfig: ApplicationConfig = {
     // importProvidersFrom(BrowserAnimationsModule),
   ]
 };
+

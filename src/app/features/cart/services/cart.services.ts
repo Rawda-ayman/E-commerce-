@@ -11,15 +11,14 @@ import { getuserorders } from '../interfaces/getuserorders.interface';
 })
 export class CartServices extends BASE_HTTP
 {
+  // variables 
+   cartcount = 0 ;
   //  CRUD operations
 
   // create cart
    AddCart(productId:string) 
    {
-     return this.post<addcart>(APIs.Add_cart,
-      {
-       productId:productId 
-     });
+     return this.post<addcart>(APIs.Add_cart, {productId:productId});
    }
   // retrieve (display) cart
   GetCart()
@@ -29,10 +28,7 @@ export class CartServices extends BASE_HTTP
   // update product
   UpdateCart(productId:string,count:number) 
   {
-     return this.Update<UpdateCart>(`${APIs.Add_cart}/${productId}`,{
-      count : count ,
-     })
-    
+     return this.Update<UpdateCart>(`${APIs.Add_cart}/${productId}`,{count : count }) ; 
   }
   // delete product and clear all cart
   DeleteProduct(productId:string)
@@ -44,7 +40,8 @@ export class CartServices extends BASE_HTTP
     return this.Delete<RemoveAllCart>(`${APIs.Add_cart}`)
   }
 
-
+  // payments
+  
    Getorders(userid:string)
   {
      return this.Get<getuserorders[]>(`${APIs.userorders}${userid}`);

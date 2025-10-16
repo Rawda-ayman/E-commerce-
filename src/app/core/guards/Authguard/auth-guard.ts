@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { Auth } from '../../../features/auth/services/auth.services';
 export const authGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:RouterStateSnapshot) => 
   {
-
+     
      const router = inject(Router);
      const platform = inject(PLATFORM_ID);
      const authservice = inject(Auth) ;
@@ -13,11 +13,15 @@ export const authGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:Rou
       {
         const token = localStorage.getItem("token");
         if(token)
-      {
+      { 
+        // error handling (exception handling)
          try
-         {
-            const userdata = (jwtDecode(token) as {id:string});
+         {    
+            // jwtDecode(token)
+            // local storageو بخزنه في الuserid بجيب
+            const userdata = jwtDecode(token) as {id:string};
              localStorage.setItem("userId",userdata.id ); 
+             authservice.verifytoken() ;
          }
          catch
          {

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Params } from "@angular/router";
 import { catchError, of, throwError } from "rxjs";
+import { Header } from './../../../shared/components/header/header';
 
 @Injectable(
     {
@@ -11,6 +12,7 @@ import { catchError, of, throwError } from "rxjs";
 export abstract class BASE_HTTP
 {
    protected readonly http = inject(HttpClient);
+   
   protected post<T>(url:string,data:{},headers?:{})
    {
     // postبقدر اهندل اي ايرور راجع من ال
@@ -19,20 +21,22 @@ export abstract class BASE_HTTP
      }).pipe(
         catchError( (error) => 
             {
-              return throwError(() => error ); 
+              // return of(error) ;
+               return throwError(() => error ); 
             }
         )
      );
-   }
-  protected Get<T>(url:string,filters?:Params,headers?:{})
+   } 
+                                     // headers?:{}
+  protected Get<T>(url:string,filters?:Params)
    {
      return this.http.get<T>(url,{
       params:filters,
-      headers:headers
-    }).pipe(
+      // headers:header
+}).pipe(
       catchError((error) => 
       {
-        return throwError(() => { error });
+        return throwError(() => error);
       }
       )
     )
@@ -45,7 +49,7 @@ export abstract class BASE_HTTP
     }).pipe(
       catchError((error) => 
       {
-        return throwError(() => { error });
+        return throwError(() => error);
       }
       )
     );
@@ -57,7 +61,7 @@ export abstract class BASE_HTTP
     }).pipe(
       catchError((error) => 
       {
-        return throwError(() => { error });
+        return throwError(() =>  error );
       }
       )
     );

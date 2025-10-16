@@ -1,12 +1,12 @@
 /* @theme
-{  
-     --main-100:#ceefce;
-     --main-200:#9dde9d; 
-     --main-300:#6cce6c; 
-     --main-400:#3bbd3b; 
-     --main-500:#0aad0a; 
-     --main-600:#088a08; 
-     --main-700:#066806; 
-     --main-800:#044504; 
-     --main-900:#022302; 
+{
+ color-main-100: "#ceefce",
+ color-main-200: "#9ddf9d",
+ color-main-300: "#6cce6c",
+ color-main-400: "#3bbe3b",
+ color-main-500: "#0aae0a",
+ color-main-600: "#088b08",
+ color-main-700: "#066806",
+ color-main-800: "#044604",
+ color-main-900: "#022302"
 } */

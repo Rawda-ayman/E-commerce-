@@ -4,6 +4,8 @@ import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } fr
 
 export const userGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:RouterStateSnapshot) => 
   {
+   //  ف هتدخل الابلكيشن user يبقي انت token ده هو بما ان فيهguardمهمه ال
+   // signinو مش هتخرج لصفحه ال
      const router = inject(Router) ;
      const platform = inject(PLATFORM_ID);
      if(isPlatformBrowser(platform))
@@ -15,6 +17,7 @@ export const userGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:Rou
         // return false ;
         return router.parseUrl("/home"); 
      }
+   // لحد ما تسجل دخول signin pageف هتفضل في الuser ف ده معناه انك مش token غير كده يبقي ملكش 
      else 
      {
       // router.navigateByUrl("/signup");

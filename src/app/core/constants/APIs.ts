@@ -10,6 +10,7 @@ export const APIs = {
     verifypass:`${enviroment.baseurl}auth/verifyResetCode`,
     resetpass:`${enviroment.baseurl}auth/resetPassword`,
     updatepass:`${enviroment.baseurl}users/changeMyPassword`,
+    verifytoken:`${enviroment.baseurl}auth/verifyToken`,
     // all products API
     all_products:`${enviroment.baseurl}products`,
     // specific product API --> (product_id)
@@ -27,6 +28,8 @@ export const APIs = {
     userorders:`${enviroment.baseurl}orders/user/`,
     // brands 
     brands:`${enviroment.baseurl}brands`, 
-    // wishlist
+    // wishlist (add - get)
     wishlist:`${enviroment.baseurl}wishlist` ,
+    // delete from wishlist
+    deletefromwishlist:`${enviroment.baseurl}wishlist/`
 }

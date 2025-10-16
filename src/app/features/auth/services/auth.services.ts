@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { RegisterInterface } from '../interfaces/register.interface';
 import { loginuserInterface } from '../interfaces/loginuser.interface';
@@ -32,6 +32,13 @@ export class Auth extends BASE_HTTP
   {
      localStorage.clear();
     this.router.navigateByUrl("/signin") ;
+  }
+  verifytoken()
+  {
+    this.Get(APIs.verifytoken).subscribe({
+      next:(response) => {} ,
+      error:(error) => {this.SignOut()}
+    })
   }
   ForgetPassword(email:{})
   {

@@ -5,9 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ProductSearchPipe implements PipeTransform {
 
-  transform(array:productsData[], searchtext:string): productsData[] 
+  transform(array:productsData[], searchtext:string): productsData[]
   {
-    return array.filter((product) => {product.title.toLocaleLowerCase().includes(searchtext.toLocaleLowerCase())}) ; 
+    console.log(searchtext) ;
+    return array.filter((product) => product.title.toLocaleLowerCase().includes(searchtext.toLocaleLowerCase())) ; 
   }
 
 }

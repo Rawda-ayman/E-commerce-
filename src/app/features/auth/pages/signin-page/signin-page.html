@@ -26,7 +26,7 @@
         </div>
         <div class="flex justify-center">
           <input formControlName="password"  id="password"  [type]="IsShowPassword? 'text' :'password' " placeholder="Password" class=" w-full border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent relative"/>
-           <span class = "absolute right-[70px] md:right-[230px] top-[69.5%] md:top-[71%]"  (click)="ShowPassword();" >
+           <span class = "absolute right-[130px] top-[66%] md:right-[230px]  md:top-[71%] lg:right-[280px] lg:top-[69%]"  (click)="ShowPassword();" >
                 <i [class]="IsShowPassword? 'fa-solid fa-eye-slash':'fa-solid fa-eye'"></i>
            </span>
         </div>  
@@ -55,8 +55,8 @@
 
 
       <!-- button -->
-      <div class="flex justify-center space-x-2">
-          <button type="submit" class=" w-1/4 rounded-full bg-green-500 text-gray-100 focus:outline-none cursor-pointer hover:bg-green-700 duration-100 flex justify-center items-center gap-2">
+      <div class="md:flex justify-center space-x-2">
+          <button type="submit" class=" w-1/4  px-1 md:p-0  rounded-2xl md:rounded-full bg-green-500 text-gray-100 focus:outline-none cursor-pointer hover:bg-green-700 duration-100 flex justify-center items-center gap-2">
            Login
             @if(IsLoading)
             {

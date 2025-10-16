@@ -28,6 +28,9 @@ export const routes: Routes = [
               path:"cart",loadChildren: ()=>import("./features/cart/cart.routes").then((m)=>m.cart)
             },
             {
+              path:"wishlist",loadChildren: ()=>import("./features/Wishlist/wishlist.routes").then((m)=>m.wishlist_routes)
+            },
+            {
               path:"categories",loadChildren: ()=>import("./features/categories/categories.routes").then((m) =>m.categories)
             },
             {

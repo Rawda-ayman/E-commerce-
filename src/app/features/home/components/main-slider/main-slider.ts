@@ -21,7 +21,7 @@ export class MainSlider
     autoplaySpeed: 700,
     navSpeed: 1000,
     navText: ['', ''],
-    items: 2,
+    items: 1,
     nav:true
   }
 

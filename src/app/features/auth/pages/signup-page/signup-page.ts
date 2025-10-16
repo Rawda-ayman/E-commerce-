@@ -4,7 +4,6 @@ import { ErrorMessage } from "../../error-message/error-message";
 import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../services/auth.services';
 import { HttpErrorResponse } from '@angular/common/http';
-import { log } from 'console';
 import { RegisterInterface } from '../../interfaces/register.interface';
 import { interval, take } from 'rxjs';
 
@@ -28,7 +27,7 @@ export class SignupPage
    private readonly auth = inject(Auth);
    private readonly router = inject(Router);
 
-  // formgroup is an object. 
+  // formgroup is an object. I took an instance from it. 
   register_form = new FormGroup(
     {
     // in first argument -->  او لا default value ممكن احط 
@@ -40,7 +39,7 @@ export class SignupPage
     rePassword:new FormControl(null,[Validators.required,Validators.pattern(/^[A-Z][a-z][0-9]{8,}$/)]),
     phone:new FormControl(null,[Validators.required,Validators.pattern(/^01[2105][0-9]{8}$/)])
   },
- { validators: [this.passwordmissmatch as ValidatorFn] }
+ { validators: [this.passwordmissmatch as ValidatorFn] } 
 );
 
   // Custom validation....

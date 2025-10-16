@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GuestPage } from './guest-page';
+import { WishlistPage } from './wishlist-page';
 
-describe('GuestPage', () => {
-  let component: GuestPage;
-  let fixture: ComponentFixture<GuestPage>;
+describe('WishlistPage', () => {
+  let component: WishlistPage;
+  let fixture: ComponentFixture<WishlistPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GuestPage]
+      imports: [WishlistPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GuestPage);
+    fixture = TestBed.createComponent(WishlistPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

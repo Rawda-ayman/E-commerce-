@@ -21,7 +21,7 @@ export class CategoriesSlider implements OnInit
     autoplaySpeed: 700,
     navSpeed: 1000,
     navText: ['', ''],
-    items: 7,
+    items: 2,
     nav:true
   }
 

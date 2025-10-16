@@ -7,6 +7,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Products, updatecartData } from '../../interfaces/UpdateCart.interface';
 import { DeleteCart } from '../../interfaces/DeleteCart.interface';
 import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from '../../../Wishlist/services/wishlist-service';
 
 @Component({
   selector: 'app-cart-page' ,
@@ -19,12 +20,14 @@ export class CartPage implements OnInit
   // service injection 
    private readonly cartservice = inject(CartServices);
    private readonly toastr = inject(ToastrService);
+   private readonly wishlist = inject(WishlistService) ;
     // variables
     cartdata!:updatecartData;  
     cartid!:string ;
     totalcartitems!:number ;
     totalcartprice!:number;
     isloading = false ;
+   Addedtowishlist: { [productId: string]: boolean } = {}; 
     
    ngOnInit(): void {
      this.GetCart();
@@ -45,7 +48,7 @@ export class CartPage implements OnInit
    }
    PutCart(product:Products,action:string)
    {    
-        this.isloading =true ;
+        this.isloading =true ; 
      product.count = action === 'increment'?   ++product.count : --product.count ;
 
      this.cartservice.UpdateCart(product.product._id,product.count).subscribe(
@@ -64,8 +67,8 @@ export class CartPage implements OnInit
       this.cartservice.DeleteProduct(product.product._id).subscribe(
        {
           next:(response:DeleteCart) => {
-            // console.log(response.data) ;
             this.cartdata = response.data ; 
+            this.GetCart() ;
         }
        }
       )
@@ -76,9 +79,21 @@ export class CartPage implements OnInit
       {
         next:(response:RemoveAllCart) => {
           this.toastr.success(response.message) ;
-          this.cartdata = [] as any ; 
+          this.GetCart() ;
+          // this.cartdata = [] as any ; 
         }
       }
     );
+   }
+   AddTowishlist(productid:string)
+   {
+      this.wishlist.AddToWishlist(productid).subscribe(
+        {
+          next:(response) => {
+            this.toastr.success(response.message) ;
+             this.Addedtowishlist[productid] = !this.Addedtowishlist[productid];
+          }
+        }
+      )
    }
 }

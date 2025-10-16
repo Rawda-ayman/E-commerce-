@@ -1,0 +1,74 @@
+@if(wishlistdata)
+{
+   <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl ">Shopping Cart</h2>
+    <hr class="w-1/2 mt-2"/>
+  
+        <h3 class=" font-bold italic text-gray-900 dark:text-white sm:text-2xl mt-3">Total Wishlist Items : {{wishlistcount}}</h3>
+       @if(wishlistdata.length)
+       {
+          <!-- data -->
+          <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
+          <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
+       
+            @for (item of wishlistdata; track item._id) 
+            {
+            <div class="space-y-6">
+              <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6 my-6"> 
+            <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
+              <a [routerLink]="['/details',item.id]" class="shrink-0 md:order-1">
+                <img class="md:h-[150px] w-full object-contain" [src]="item.imageCover" [alt]="item.title" />
+              </a>
+
+              <div class="flex items-center justify-between md:order-3 md:justify-end">
+              
+                <!-- price -->
+                <div class="text-end md:order-4 md:w-32">
+                  <p class="text-base font-bold text-gray-900 dark:text-white">{{item.price| currency:" EGP ":"symbol" :"1.0"}}</p>
+                </div>
+              </div>
+
+              <!-- title and buttons -->
+              <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
+                <a  class="text-base font-medium text-gray-900 hover:underline">{{item.title}}</a>
+                   
+                <div class="flex items-center gap-4 mt-3">
+                  <!-- remove button  -->
+                  <button (click)="DeleteProductFromWishlist(item.id)" type="button" class="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
+                    <svg class="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                    </svg>
+                    Remove
+                  </button>
+                </div>
+              </div>
+
+            </div>
+              </div>
+             </div>
+            }
+          </div>
+
+        </div>
+       }
+       @else
+       {
+         <div class="w-fit border-l-2 p-4 mt-5 bg-green-400" role="alert">
+           <p class="font-bold  text-3xl">Sorry,Your Wishlist Is Empty!</p>
+           <button  routerLink="/products" class="bg-green-500 hover:bg-green-600 p-2 rounded-2xl text-white cursor-pointer mt-2">
+              Save your Favourite Products Now 
+              <i class="fa-solid fa-face-smile"></i>
+          </button>
+         </div>
+       }
+
+    </div>
+
+  </section>
+}
+ @else 
+{
+    <app-loading-spinner/>
+}
+
