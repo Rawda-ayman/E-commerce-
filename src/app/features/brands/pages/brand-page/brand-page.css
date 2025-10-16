@@ -1,0 +1,11 @@
+.animation:hover .title
+{
+     transform: translateY(0%);
+     transition: all 0.1s 0.2s;
+     background-color: rgb(207, 204, 204);
+}
+
+.title
+{
+    transform: translateY(100%);
+}

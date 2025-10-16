@@ -16,11 +16,11 @@
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-300 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
         @if(isloggedin) 
         {
-            <li>
+        <li>
               <a routerLink="/home" routerLinkActive="bg-white text-black rounded-lg" class="block py-2 px-3 text-black font-bold" aria-current="page">
                 Home
               </a>
-           </li>
+        </li>
         <li>
           <a  routerLink="/cart" routerLinkActive="bg-white text-black rounded-lg" class="block py-2 px-3 text-black font-bold" aria-current="page">
             cart
@@ -47,7 +47,10 @@
           <a routerLink="/brands" routerLinkActive="bg-white text-black rounded-lg" class="block py-2 px-3 text-black font-bold" aria-current="page">brands</a>
         </li>
         <li>
-          <button (click)="SignOut();"  class="block py-2 px-3 text-black font-bold cursor-pointer" aria-current="page">Signout</button> 
+          <button (click)="SignOut();"  class="block py-2 px-3 text-black font-bold cursor-pointer" aria-current="page">
+            Signout
+            <i  class="fa-solid fa-door-open text-2xl"></i>
+          </button> 
         </li>
         }
         @else 

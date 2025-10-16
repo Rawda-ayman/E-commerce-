@@ -1,5 +1,5 @@
-            <div class="p-4">
-               <div class=" h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <div class="p-4 parent">
+               <div class=" h-full hover:border-2 border-gray-200 hover:border-green-400 border-opacity-60 rounded-lg overflow-hidden shadow-2xl shadow-gray-100">
                <div class="flex justify-center items-center">
                  <img class="w-full md:w-[75%] object-contain object-center" [src]="product.imageCover" [alt]="product.title">
                </div>
@@ -18,7 +18,8 @@
                 </span>
 
                 
-                 <div class="mt-2 flex gap-2 flex-row justify-between items-center"> 
+                 <div class="mt-2 flex gap-2 flex-row justify-between items-center state"> 
+
                     <button [disabled]="isloading" (click)="AddProduct(product.id)" class="!disabled:bg-green-800 !disabled:cursor-auto btn-main relative">
                       Add to Cart
                      
@@ -27,7 +28,6 @@
                       <div style="border-top-color:transparent" class="w-5 h-5 border-4 border-white border-solid rounded-full animate-spin absolute top-1/2 -translate-y-1/2 end-0 "></div>
                     }
                     </button>
-
 
                     <!-- wishlist --> 
                      <button (click)="AddProductToWishlist(product.id);" type="button" class="inline-flex cursor-pointer items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline">

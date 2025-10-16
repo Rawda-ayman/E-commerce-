@@ -1,0 +1,13 @@
+
+.element:hover .remove
+{
+   transform: translateY(0%);
+   opacity: 1;
+   transition: all 0.1s 0.3s;
+}
+
+.remove
+{
+   transform: translateY(420%);
+   opacity: 0;
+}

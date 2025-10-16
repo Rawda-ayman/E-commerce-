@@ -25,15 +25,12 @@
            <label for="password">Password</label>
         </div>
         <div class="flex justify-center">
-          <input formControlName="password"  id="password"  [type]="IsShowPassword? 'text' :'password' " placeholder="Password" class=" w-full border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent relative"/>
-           <span class = "absolute right-[130px] top-[66%] md:right-[230px]  md:top-[71%] lg:right-[280px] lg:top-[69%]"  (click)="ShowPassword();" >
-                <i [class]="IsShowPassword? 'fa-solid fa-eye-slash':'fa-solid fa-eye'"></i>
-           </span>
+          <input formControlName="password"  id="password"  type="password" placeholder="Password" class=" w-full border-2 rounded px-3 py-2 text-gray-700 focus:outline-none focus:border-green-400 focus:shadow-none focus:ring-transparent"/>
         </div>  
       </div>
       <div>
           @if (loginform.get("email")?.errors&& loginform.get("email")?.touched||loginform.get("password")?.errors && loginform.get("password")?.touched) 
-        {
+          {
             @if (loginform.get("email")?.getError("required")||loginform.get("password")?.getError("required")) 
             {
              <app-error-message>

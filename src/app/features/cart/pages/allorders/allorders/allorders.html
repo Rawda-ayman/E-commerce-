@@ -1,25 +1,20 @@
 <div class="max-w-7xl mx-auto p-6">
   <h1 class="text-2xl font-semibold mb-6">All Orders Summary</h1>
-
-  <!-- No Orders -->
- <div *ngIf="!userorder?.length" class="text-center text-gray-500 border border-dashed p-6 rounded-lg">
-    No orders available.
-  </div>
   
   <!-- Orders List -->
-  <div *ngIf="userorder?.length" class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
+  <div *ngIf="userorder?.length" class="grid grid-cols-1 md:grid-cols-2 gap-8"> 
     <div
       *ngFor="let order of userorder"
-      class="border rounded-2xl bg-white shadow-sm overflow-hidden flex flex-col" >
+      class="hover:border-2 hover:border-green-400 rounded-2xl bg-white shadow-lg overflow-hidden flex flex-col " >
       <!-- Order Header -->
       <div class="p-4 border-b bg-gray-50 flex justify-between items-center">
         <div>
-          <p class="text-sm text-gray-500">Order ID</p>
-          <p class="text-sm font-medium text-gray-800 truncate">{{ order._id }}</p>
+          <p class="text-lg font-bold text-gray-500">Order ID</p>
+          <p class="text-sm font-bold text-gray-800 truncate">{{ order._id }}</p>
         </div>
         <div class="flex gap-2">
           <span
-            class="px-2 py-0.5 rounded-full text-xs font-medium"
+            class="px-2 py-0.5 rounded-full text-xs font-bold"
             [ngClass]="order.isPaid ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'"
             >{{ order.isPaid ? 'Paid' : 'Unpaid' }}</span
           >
@@ -33,47 +28,47 @@
 
       <!-- Customer Details -->
       <div class="p-4 border-b">
-        <p class="text-sm text-gray-500">Customer</p>
-        <p class="text-sm font-medium text-gray-800">{{ order.user.name }}</p> 
-        <p class="text-xs text-gray-500">{{ order.user.email }}</p>
-        <p class="text-xs text-gray-500">{{ order.user.phone }}</p>
+        <p class="text-lg font-bold text-gray-500">Customer</p>
+        <p class="text-sm font-bold text-gray-800">Name : {{ order.user.name }}</p> 
+        <p class="text-xs font-bold text-gray-800">Email : {{ order.user.email }}</p>
+        <p class="text-xs font-bold text-gray-800">Phone : {{ order.user.phone }}</p>
       </div>
 
       <!-- Order Info -->
       <div class="p-4 border-b grid grid-cols-2 gap-4 text-sm">
         <div>
-          <p class="text-gray-500 text-xs">Created At</p>
-          <p class="font-medium">{{ order.createdAt | date: 'medium' }}</p>
+          <p class="text-gray-500 text-lg font-bold">Created At : </p>
+          <p class="font-bold">{{ order.createdAt | date: 'medium' }}</p>
         </div>
         <div>
-          <p class="text-gray-500 text-xs">Total Price</p>
-          <p class="font-medium">{{ order.totalOrderPrice | currency:'EGY' }}</p>
+          <p class="text-gray-500 text-lg font-bold">Total Price : </p>
+          <p class="font-bold">{{ order.totalOrderPrice | currency:'EGY' }}</p>
         </div>
         <div>
-          <p class="text-gray-500 text-xs">Payment</p>
-          <p class="font-medium">{{ order.paymentMethodType }}</p>
+          <p class="text-gray-500 text-lg font-bold">Payment : </p>
+          <p class="font-bold">{{ order.paymentMethodType }}</p>
         </div>
         <div>
-          <p class="text-gray-500 text-xs">Items</p>
-          <p class="font-medium">{{ order.cartItems.length || 0 }}</p>
+          <p class="text-gray-500 text-lg font-bold">Items : </p>
+          <p class="font-bold">{{ order.cartItems.length || 0 }}</p>
         </div>
       </div>
 
       <!-- Shipping -->
       <div class="p-4 border-b text-sm">
-        <p class="text-gray-500 text-xs mb-1">Shipping Address</p>
-        <p class="font-medium text-gray-800">
+        <p class="text-gray-500 text-lg font-bold mb-1">Shipping Address : </p>
+        <p class="font-bold text-gray-800">
           {{ order.shippingAddress?.details || 'N/A' }},
           {{ order.shippingAddress?.city || '' }}
         </p>
-        <p class="text-xs text-gray-500">
+        <p class="text-lg font-bold text-gray-500">
           Phone: {{ order.shippingAddress?.phone || 'N/A' }}
         </p>
       </div>
 
       <!-- Cart Items -->
       <div class="p-4 space-y-2">
-        <p class="text-gray-500 text-xs">Products</p>
+        <p class="text-gray-500 text-lg font-bold">Products : </p>
         <div
           *ngFor="let item of order.cartItems"
           class="flex items-center gap-3 border rounded-lg p-2"
@@ -84,8 +79,8 @@
             class="w-12 h-12 rounded object-cover border"
           />
           <div>
-            <p class="text-sm font-medium text-gray-800">{{ item.product.title }}</p>
-            <p class="text-xs text-gray-500">
+            <p class="text-sm font-bold text-gray-800">{{ item.product.title }}</p>
+            <p class="text-xs text-gray-500 font-bold">
               {{ item.count }} × {{ item.price | currency:'EGY' }}
             </p>
           </div>
@@ -97,6 +92,10 @@
   </div>
 
 
+    <!-- No Orders -->
+ <div *ngIf="!userorder?.length" class="text-center text-gray-500 border border-dashed p-6 rounded-lg">
+    No orders available yet.
+  </div>
 </div>
 
 

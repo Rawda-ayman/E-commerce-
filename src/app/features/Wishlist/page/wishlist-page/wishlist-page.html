@@ -14,8 +14,8 @@
        
             @for (item of wishlistdata; track item._id) 
             {
-            <div class="space-y-6">
-              <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6 my-6"> 
+            <div class="space-y-6 element">
+              <div class="rounded-lg border-2 border-gray-200 hover:border-green-400 bg-white p-4 shadow-lg dark:border-gray-700 dark:bg-gray-800 md:p-6 my-6"> 
             <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
               <a [routerLink]="['/details',item.id]" class="shrink-0 md:order-1">
                 <img class="md:h-[150px] w-full object-contain" [src]="item.imageCover" [alt]="item.title" />
@@ -35,7 +35,7 @@
                    
                 <div class="flex items-center gap-4 mt-3">
                   <!-- remove button  -->
-                  <button (click)="DeleteProductFromWishlist(item.id)" type="button" class="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
+                  <button (click)="DeleteProductFromWishlist(item.id)" type="button" class="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500 remove">
                     <svg class="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
                     </svg>

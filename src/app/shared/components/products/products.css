@@ -1,0 +1,10 @@
+.parent:hover .state
+{
+    transform: translateY(0%);
+    transition: all 0.2s 0.3s;
+}
+.parent div.state
+{
+   /* opacity: 0; */
+   transform: translateY(150%);
+}
