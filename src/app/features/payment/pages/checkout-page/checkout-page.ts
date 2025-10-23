@@ -70,6 +70,7 @@ constructor()
             next:(response):void => 
             {
               window.open(response.session.url,"_self") ;
+             this.router.navigateByUrl(`${enviroment.appurl}`+"allorders");
             }
           }
         ) ;
