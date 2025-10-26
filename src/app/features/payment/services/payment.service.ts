@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BASE_HTTP } from '../../../core/services/http/basehttp.services';
 import { APIs } from '../../../core/constants/APIs';
-import { enviroment } from '../../../../enviroments/enviroment.dev';
+import { enviroment } from './../../../../enviroments/enviroment.prod';
 import { onlinepay } from '../interfaces/onlinepay.interface';
 import { cashpay } from '../interfaces/cashpay.interface';
 
