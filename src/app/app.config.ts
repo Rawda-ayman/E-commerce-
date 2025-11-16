@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withHashLocation()), provideClientHydration(withEventReplay()),
+    provideRouter(routes), provideClientHydration(withEventReplay()),
 
     // Lw hat3mly deployment 3ala vercel hatsht8li CSR keda msh SSR 
     // f lw CSR lazm tzwdy de =>>
